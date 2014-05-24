@@ -4,8 +4,9 @@ using namespace std;
 
 Game::Game() : window (sf::VideoMode(600, 800) , "Tetris", sf::Style::Default)
 {
+	window.setFramerateLimit(60);
 	CreateScene();
-	speed = sf::Vector2f(0, 0.005);
+	speed = sf::Vector2f(0, 0.01);
 }
 
 Game::~Game(void)
@@ -43,11 +44,17 @@ void Game::Event()
 
 void Game::Update()
 {
-	//test.move(speed.x, speed.y);
+	test.move(speed.x, speed.y);
 
+	boundingBox = test.getGlobalBounds();
+	otherBox = bord_bas.getGlobalBounds();
 
-	if(test.getLocalBounds().intersects(bord_bas.getLocalBounds()));
+	cout << "Hauteur de la boîte : " << boundingBox.height << endl << "Largeur de la boîte : " << boundingBox.width << endl;
+	cout << "Position x de la boîte : " << boundingBox.left << endl << "Position y de la boîte : " << boundingBox.top << endl;
+
+	if(boundingBox.intersects(bord_bas.getGlobalBounds()));
 	{
+		//test.setPosition(175, 725);
 		cout<< "Hit" << endl;
 	}
 }
@@ -62,15 +69,11 @@ void Game::Render()
 void Game::CreateScene()
 {
 	bord_bas = sf::RectangleShape(sf::Vector2f(600, 1));
-	bord_bas.setPosition(0, 600);
+	bord_bas.setPosition(0, 800);
 	bord_bas.setFillColor(sf::Color::Red);
 
-	otherBox = bord_bas.getLocalBounds();
-
 	test = sf::RectangleShape(sf::Vector2f(200, 75));
-	test.setPosition(175, 0);
-
-	boundingBox = test.getLocalBounds();
+	test.setPosition(175, 200);
 }
 
 void Game::Draw()
