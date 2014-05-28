@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <iostream>
+#include "Object.h"
 
 class Game
 {
@@ -19,16 +20,17 @@ public:
 	void Update();
 
 	void Draw();
+	
+	sf::RenderWindow getWindow();
 
 private: 
-	sf::RenderWindow window;
 	sf::Event event;
 
 	sf::RectangleShape bord_bas;
-	sf::RectangleShape test;
-	sf::FloatRect boundingBox;
-	sf::FloatRect otherBox;
+	sf::RectangleShape bord_droit;
+	sf::RectangleShape bord_gauche;
+	sf::RenderWindow window;
 
-	sf::Vector2f speed;
+	Object test;
 };
 

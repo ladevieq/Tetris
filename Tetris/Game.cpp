@@ -1,12 +1,13 @@
 #include "Game.h"
 
 using namespace std;
+using namespace sf;
 
-Game::Game() : window (sf::VideoMode(600, 800) , "Tetris", sf::Style::Default)
+Game::Game(): test(Object())
 {
-	window.setFramerateLimit(60);
+	window = sf::RenderWindow(sf::VideoMode(600, 800) , "Tetris", sf::Style::Default);
+	window.setFramerateLimit(6000);
 	CreateScene();
-	speed = sf::Vector2f(0, 0.01);
 }
 
 Game::~Game(void)
@@ -38,25 +39,50 @@ void Game::Event()
 			{
 				window.close();
 			}
+
+			if (event.key.code == sf::Keyboard::Right)
+			{
+				//cubePosition.x += 50;
+			}
+
+			if (event.key.code == sf::Keyboard::Left)
+			{
+				//cubePosition.x -= 50;
+			}
+
+			if (event.key.code == sf::Keyboard::R)
+			{
+				//test.rotate(90);
+			}
 		}
 	}
 }
 
 void Game::Update()
 {
-	test.move(speed.x, speed.y);
 
-	boundingBox = test.getGlobalBounds();
-	otherBox = bord_bas.getGlobalBounds();
-
-	cout << "Hauteur de la boîte : " << boundingBox.height << endl << "Largeur de la boîte : " << boundingBox.width << endl;
-	cout << "Position x de la boîte : " << boundingBox.left << endl << "Position y de la boîte : " << boundingBox.top << endl;
-
-	if(boundingBox.intersects(bord_bas.getGlobalBounds()));
+/*	if(test.getGlobalBounds().intersects(bord_droit.getGlobalBounds()))
 	{
-		//test.setPosition(175, 725);
+		cout<< "Hit" << endl;
+
+//		if(test.getRotation() == 90 || test.getRotation() == 180 && cubePosition.x <= 550)
+		{
+//			cubePosition.x <= 550;
+		}
+	}
+
+	if(test.getGlobalBounds().intersects(bord_gauche.getGlobalBounds()))
+	{
+		cubePosition.x;
 		cout<< "Hit" << endl;
 	}
+
+	if(test.getGlobalBounds().intersects(bord_bas.getGlobalBounds()))
+	{
+		test.setPosition(cubePosition.x, 750);
+		test.move(0, 0);
+		cout<< "Hit" << endl;
+	}*/
 }
 
 void Game::Render()
@@ -68,16 +94,28 @@ void Game::Render()
 
 void Game::CreateScene()
 {
+	/////////
+	//Bords//
+	/////////
 	bord_bas = sf::RectangleShape(sf::Vector2f(600, 1));
-	bord_bas.setPosition(0, 800);
-	bord_bas.setFillColor(sf::Color::Red);
-
-	test = sf::RectangleShape(sf::Vector2f(200, 75));
-	test.setPosition(175, 200);
+	bord_bas.setPosition(0, 799);
+	bord_bas.setFillColor(sf::Color::White);
+	bord_droit = sf::RectangleShape(sf::Vector2f(1, 800));
+	bord_droit.setPosition(599, 0);
+	bord_droit.setFillColor(sf::Color::White);
+	bord_gauche = sf::RectangleShape(sf::Vector2f(1, 800));
+	bord_gauche.setPosition(0, 0);
+	bord_gauche.setFillColor(sf::Color::White);
 }
 
 void Game::Draw()
 {
 	window.draw(bord_bas);
-	window.draw(test);
+	window.draw(bord_droit);
+	window.draw(bord_gauche);
+}
+
+sf::RenderWindow Game::getWindow()
+{
+	return window;
 }
