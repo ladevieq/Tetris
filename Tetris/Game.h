@@ -7,7 +7,6 @@ class Game
 {
 public:
 	Game(void);
-	~Game(void);
 
 	void Run();
 
@@ -20,8 +19,6 @@ public:
 	void Update();
 
 	void Draw();
-	
-	sf::RenderWindow getWindow();
 
 private: 
 	sf::Event event;
@@ -31,6 +28,11 @@ private:
 	sf::RectangleShape bord_gauche;
 	sf::RenderWindow window;
 
-	Object test;
+	Object tile;
+	int width, height;
+	sf::Vector2u tileSize;
+	std::string fileName;
+
+	int randomShape;
 };
 

@@ -1,20 +1,50 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <iostream>
-#include "Game.h"
+#include <ctime>
+#include <fstream>
+#include <string>
+#include <vector>
 
-class Object
+class Object : public sf::Drawable, public sf::Transformable
 {
 public:
 	Object(void);
 
-	void createObject();
+	int rotate(int shape);
 
-	void drawObject();
+	void Update(int tileNumber); 
 
-private: 
+	void Droite();
+
+	void Gauche();
+
+	void collisionBas(sf::FloatRect bounds);
+
+	void barreColor();
+
+	bool load(const std::string& tileset, const int *tiles, int width, int height);
+
+	int generate();
+
+private:
+
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        // et on dessine enfin le tableau de vertex
+		for(int i = 0; i < 16; i++)
+			target.draw(forme[i]);
+    }
+
 	sf::Vector2f speed;
-	sf::RectangleShape rectangle;
-	sf::RenderWindow window;
+	sf::Vector2f posShape;
+	float *posYShape;
+
+	sf::Texture m_tile;
+	sf::RectangleShape m_vertices;
+	sf::Vertex* quad;
+	sf::Sprite* forme;
+
+	int right, left;
 };
 

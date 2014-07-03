@@ -1,0 +1,22 @@
+<map version="1.0" name="tetris_name">
+	<shape type"i">
+		<orientation value="1">
+			<tile tileType="1"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="1"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="1"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="1"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+			<tile tileType="0"/>
+		</orientation>
+	</shape>
+</map>

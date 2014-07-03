@@ -3,21 +3,111 @@
 using namespace std;
 using namespace sf;
 
-Object::Object(void)
+Object::Object()
 {
-	speed = Vector2f(0, 0.1);
-	createObject();
+	speed = Vector2f(0, 0);
+	posShape = Vector2f(0, 0);
+	right = 0;
+	left = 0;
+	forme = new sf::Sprite [16];
+	posYShape = new float[4];
+	for (unsigned int i = 0; i < 4; ++i)
+		for (unsigned int j = 0; j < 4; ++j)
+		{	
+			// on récupère le numéro de tuile courant
+			int tileNumber = i + j * 4;
+			forme[tileNumber].setPosition(i * 50, j * 50);
+		}
 }
 
-void Object::createObject()
-{
-	rectangle = RectangleShape(Vector2f(200, 100));
-	rectangle.setOrigin(100, 50);
-	rectangle.setPosition(200, 50);
-	rectangle.setFillColor(Color::Red);
+bool Object::load(const string& tileset, const int *tiles, int width, int height)
+{	
+	// on charge la texture du tileset
+	if (!m_tile.loadFromFile(tileset))
+		return false;
+
+	// on remplit le tableau de vertex, avec un quad par tuile
+	for (unsigned int i = 0; i < width; ++i)
+		for (unsigned int j = 0; j < height; ++j)
+		{	
+			// on récupère le numéro de tuile courant
+			int tileNumber = i + j * width;
+
+			if(tiles[tileNumber] == 1)
+				forme[tileNumber].setTexture(m_tile);
+
+			Update(tileNumber);
+		}
+
+	return true;
 }
 
-void Object::drawObject()
+int Object::rotate(int shape)
 {
-	window.draw(rectangle);
+	forme = new sf::Sprite [16];
+	for (unsigned int i = 0; i < 4; ++i)
+		for (unsigned int j = 0; j < 4; ++j)
+		{	
+			// on récupère le numéro de tuile courant
+			int tileNumber = i + j * 4;
+			forme[tileNumber].setPosition(i * 50, posYShape[j]);
+		}
+	shape = ((shape + 1) % 4 == 0 ? shape - 3 : shape + 1);
+	return shape;
+}
+
+void Object::Update(int tileNumber)
+{
+	if(forme[4].getPosition().y + 50 < 700)
+		forme[tileNumber].move(0, 1);
+
+	for (unsigned int i = 0; i < 1; ++i)
+		for (unsigned int j = 0; j < 4; ++j)
+		{
+			posYShape[j] = forme[i + j * 4].getPosition().y;
+		}
+}
+
+void Object::Droite()
+{
+	if(right < 10)
+	{
+		left--;
+		right++;
+		for (unsigned int i = 0; i < 4; ++i)
+			for (unsigned int j = 0; j < 4; ++j)
+			{
+				posShape = forme[i + j * 4].getPosition();
+				forme[i + j * 4].setPosition(posShape.x + 50, posShape.y);
+			}
+	}
+}
+
+void Object::Gauche()
+{
+	if(left < 0)
+	{
+		right--;
+		left++;
+		for (unsigned int i = 0; i < 4; ++i)
+			for (unsigned int j = 0; j < 4; ++j)
+			{
+				posShape = forme[i + j * 4].getPosition();
+				forme[i + j * 4].setPosition(posShape.x - 50, posShape.y);
+			}
+	}
+}
+
+void Object::collisionBas(FloatRect bounds)
+{
+}
+
+void Object::barreColor()
+{
+}
+
+int Object::generate()
+{
+	int g = (rand() % 7) * 4;
+	return g;
 }
