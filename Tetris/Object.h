@@ -13,17 +13,15 @@ public:
 
 	int rotate(int shape);
 
-	void Update(int tileNumber); 
+	void Update(sf::FloatRect bounds); 
 
 	void Droite();
 
 	void Gauche();
 
-	void collisionBas(sf::FloatRect bounds);
-
 	void barreColor();
 
-	bool load(const std::string& tileset, const int *tiles, int width, int height);
+	bool load(const std::string& tileset, const int *tiles, int width, int height, sf::FloatRect bounds);
 
 	int generate();
 
@@ -38,7 +36,7 @@ private:
 
 	sf::Vector2f speed;
 	sf::Vector2f posShape;
-	float *posYShape;
+	sf::Vector2f *posXYShape;
 
 	sf::Texture m_tile;
 	sf::RectangleShape m_vertices;

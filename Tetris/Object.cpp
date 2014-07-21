@@ -9,18 +9,19 @@ Object::Object()
 	posShape = Vector2f(0, 0);
 	right = 0;
 	left = 0;
-	forme = new sf::Sprite [16];
-	posYShape = new float[4];
+	posXYShape = new Vector2f[4];
+	forme = new Sprite[16];
 	for (unsigned int i = 0; i < 4; ++i)
 		for (unsigned int j = 0; j < 4; ++j)
 		{	
+			//forme.push_back();
+			
 			// on récupère le numéro de tuile courant
-			int tileNumber = i + j * 4;
-			forme[tileNumber].setPosition(i * 50, j * 50);
+			forme[i + j * 4].setPosition(i * 50, j * 50);
 		}
 }
 
-bool Object::load(const string& tileset, const int *tiles, int width, int height)
+bool Object::load(const string& tileset, const int *tiles, int width, int height, FloatRect bounds)
 {	
 	// on charge la texture du tileset
 	if (!m_tile.loadFromFile(tileset))
@@ -36,36 +37,47 @@ bool Object::load(const string& tileset, const int *tiles, int width, int height
 			if(tiles[tileNumber] == 1)
 				forme[tileNumber].setTexture(m_tile);
 
-			Update(tileNumber);
+			
 		}
 
+	Update(bounds);
 	return true;
 }
 
 int Object::rotate(int shape)
 {
-	forme = new sf::Sprite [16];
+	forme = new Sprite[16];
 	for (unsigned int i = 0; i < 4; ++i)
 		for (unsigned int j = 0; j < 4; ++j)
 		{	
 			// on récupère le numéro de tuile courant
 			int tileNumber = i + j * 4;
-			forme[tileNumber].setPosition(i * 50, posYShape[j]);
+			forme[tileNumber].setPosition(posXYShape[i].x, posXYShape[j].y);
 		}
 	shape = ((shape + 1) % 4 == 0 ? shape - 3 : shape + 1);
 	return shape;
 }
 
-void Object::Update(int tileNumber)
+void Object::Update(FloatRect bounds)
 {
-	if(forme[4].getPosition().y + 50 < 700)
-		forme[tileNumber].move(0, 1);
+	for(int i = 0; i < 16; i++)
+	{
+		if(forme[i].getGlobalBounds().intersects(bounds))
+			for(int j = 0; j < 16; j++)
+				forme[j].move(0, 0);
+	}
+
+	if(!forme[12].getGlobalBounds().intersects(bounds))
+			for(int j = 0; j < 16; j++)
+				forme[j].move(0, 1);
 
 	for (unsigned int i = 0; i < 1; ++i)
 		for (unsigned int j = 0; j < 4; ++j)
-		{
-			posYShape[j] = forme[i + j * 4].getPosition().y;
-		}
+			posXYShape[j].y = forme[i + j * 4].getPosition().y;
+
+	for (unsigned int i = 0; i < 4; ++i)
+		for (unsigned int j = 0; j < 1; ++j)
+			posXYShape[i].x = forme[i].getPosition().x;
 }
 
 void Object::Droite()
@@ -96,10 +108,6 @@ void Object::Gauche()
 				forme[i + j * 4].setPosition(posShape.x - 50, posShape.y);
 			}
 	}
-}
-
-void Object::collisionBas(FloatRect bounds)
-{
 }
 
 void Object::barreColor()

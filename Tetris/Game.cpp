@@ -62,7 +62,7 @@ void Game::Update()
 										1, 0, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -73,7 +73,7 @@ void Game::Update()
 										0, 0, 0, 0,
 										1, 1, 1, 1,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -84,7 +84,7 @@ void Game::Update()
 										1, 0, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -95,7 +95,7 @@ void Game::Update()
 										0, 0, 0, 0,
 										1, 1, 1, 1,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -106,7 +106,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -117,7 +117,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -128,7 +128,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -139,7 +139,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -150,7 +150,7 @@ void Game::Update()
 										0, 1, 1, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -161,7 +161,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										0, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -172,7 +172,7 @@ void Game::Update()
 										0, 1, 1, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -183,7 +183,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										0, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 		case 12:
@@ -193,7 +193,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										0, 1, 1, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -204,7 +204,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -215,7 +215,7 @@ void Game::Update()
 										0, 1, 1, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -226,7 +226,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -237,7 +237,7 @@ void Game::Update()
 										0, 1, 0, 0,
 										1, 1, 1, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -248,7 +248,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -259,7 +259,7 @@ void Game::Update()
 										1, 1, 1, 0,
 										0, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -270,7 +270,7 @@ void Game::Update()
 										1, 1, 0, 0,
 										0, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		}
 
@@ -281,7 +281,7 @@ void Game::Update()
 										1, 0, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -292,7 +292,7 @@ void Game::Update()
 										1, 1, 1, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -303,7 +303,7 @@ void Game::Update()
 										0, 1, 0, 0,
 										0, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -314,7 +314,7 @@ void Game::Update()
 										0, 0, 1, 0,
 										1, 1, 1, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -325,7 +325,7 @@ void Game::Update()
 										0, 1, 0, 0,
 										1, 1, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -336,7 +336,7 @@ void Game::Update()
 										1, 0, 0, 0,
 										1, 1, 1, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -347,7 +347,7 @@ void Game::Update()
 										1, 0, 0, 0,
 										1, 0, 0, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 
@@ -358,7 +358,7 @@ void Game::Update()
 										1, 1, 1, 0,
 										0, 0, 1, 0,}};
 
-			tile.load(fileName, *shapes, width, height);
+			tile.load(fileName, *shapes, width, height, bord_bas.getGlobalBounds());
 			break;
 		};
 		default:
@@ -392,8 +392,8 @@ void Game::CreateScene()
 
 void Game::Draw()
 {
-	/*window.draw(bord_bas);
-	window.draw(bord_droit);
+	window.draw(bord_bas);
+	/*window.draw(bord_droit);
 	window.draw(bord_gauche);*/
 	window.draw(tile);
 }
